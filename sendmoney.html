@@ -1,42 +1,122 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="/assets/css/style.css" />
     <title>My Wallet - Enviar Dinero</title>
-</head>
-<body>
-<div class="container">
-    <h2>Enviar Dinero</h2>
-    <form>
-      <div class="form-group">
-        <label for="searchContact">Buscar contactos:</label>
-        <input type="text" class="form-control" id="searchContact" placeholder="Search contact">
+  </head>
+  <body>
+    <div class="container mt-5">
+      <h2>Enviar Dinero</h2>
+      <hr />
+
+      <div class="mb-4">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#modalNuevoContacto"
+        >
+          + Agregar nuevo contacto
+        </button>
       </div>
-      <button type="submit" class="btn btn-primary">Agregar nuevo contacto</button>
- <h3>Contactos</h3>
-  <ul id="contactList" class="list-group">
-    <li class="list-group-item">
-      <div class="contact-info">
-        <span class="contact-name">Fernando Alonso</span>
-        <span class="contact-details">RUT: 15345678-2, Alias: fer.alonso, Banco: Comerce Bank</span>
+
+      <h3>Selecciona un contacto</h3>
+      <ul id="contactList" class="list-group mb-4">
+        <li class="list-group-item text-muted text-center">
+          No has agregado contactos aún.
+        </li>
+      </ul>
+
+      <div class="card p-4 shadow-sm">
+        <div class="mb-3">
+          <label for="montoEnvio" class="form-label">Monto a enviar:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="montoEnvio"
+            placeholder="Ej: 5000"
+          />
+        </div>
+        <button id="btnConfirmarEnvio" class="btn btn-success w-100">
+          Confirmar y Enviar Dinero
+        </button>
       </div>
-    </li>
-    <li class="list-group-item">
-      <div class="contact-info">
-        <span class="contact-name">Sergio Michel Pérez</span>
-        <span class="contact-details">RUT: 25765432-1, Alias: checo.perez, Banco: ScotiaBank</span>
+
+      <a href="menu.html" class="btn btn-secondary mt-3"
+        >Volver al Menú Principal</a
+      >
+    </div>
+
+    <div
+      class="modal fade"
+      id="modalNuevoContacto"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Datos del Beneficiario</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form id="formRegistroContacto">
+              <input
+                type="text"
+                id="regNombre"
+                class="form-control mb-2"
+                placeholder="Nombre y Apellido"
+                required
+              />
+              <input
+                type="text"
+                id="regRut"
+                class="form-control mb-2"
+                placeholder="RUT (ej: 12.345.678-9)"
+                required
+              />
+              <input
+                type="text"
+                id="regBanco"
+                class="form-control mb-2"
+                placeholder="Nombre del Banco"
+                required
+              />
+              <input
+                type="text"
+                id="regCuenta"
+                class="form-control mb-2"
+                placeholder="Número de Cuenta"
+                required
+              />
+              <input
+                type="email"
+                id="regEmail"
+                class="form-control mb-2"
+                placeholder="Email del beneficiario"
+                required
+              />
+              <button type="submit" class="btn btn-primary w-100 mt-3">
+                Guardar Contacto
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
-    </li>
-      <button type="submit" class="btn btn-primary">Enviar dinero</button>
-    </form>
-    <a href="menu.html" class="btn btn-secondary">Volver al Menú Principal</a>
-  </div>
-  <script src="/assets/js/send.js"></script>
-</body>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/js/send.js"></script>
+  </body>
 </html>
